@@ -1,0 +1,22 @@
+name: ⚡ Omega Farm Mega-Ping
+
+on:
+  schedule:
+    - cron: '* * * * *'   # chaque minute
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        instance: [1,2,3,4,5]  # 5 jobs en parallèle
+    steps:
+      - name: Mega-ping instance ${{ matrix.instance }}
+        run: |
+          SMART='https://www.profitableratecpm.com/zbhq3083s?key=…'
+          POP='https://pl27194869.profitableratecpm.com/a4/68/fb/….js'
+          for i in {1..500}; do
+            curl -s "$SMART" > /dev/null
+            curl -s "$POP"   > /dev/null
+          done
